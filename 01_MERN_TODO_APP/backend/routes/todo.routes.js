@@ -1,9 +1,10 @@
 import express from "express";
 import { Todo } from "../models/todo.models.js";
 
+//* Create the Route Handler
 const router = express.Router();
 
-// Get All Todos
+//? Get All Todos
 router.get("/", async (req, res) => {
   try {
     const todos = await Todo.find();
@@ -14,12 +15,13 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Add a new todo
+//? Add a new todo
 router.post("/", async (req, res) => {
   console.log("Request body from add a new todo: ", req.body);
   const todo = new Todo({
     text: req.body.text,
   });
+  console.log("Adding Todo: ", todo);
 
   try {
     const newTodo = await todo.save();
@@ -29,10 +31,11 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Update a todo (text and/or completed)
+//? Update a todo (text and/or completed)
 router.patch("/:id", async (req, res) => {
   try {
     const todo = await Todo.findById(req.params.id);
+    console.log("Todo Params: ", req.params);
     console.log("Todo from Update function: ", todo);
     if (!todo) return res.status(404).json({ message: "Todo Not Found" });
 
@@ -53,7 +56,7 @@ router.patch("/:id", async (req, res) => {
   }
 });
 
-// Delete a Todo
+//? Delete a Todo
 router.delete("/:id", async (req, res) => {
   try {
     await Todo.findByIdAndDelete(req.params.id);
