@@ -19,9 +19,7 @@ function TodoList() {
         newTodo
       );
 
-      console.log("Added todo: ", addedTodo.data);
-
-      setTodos([...todos, addedTodo]);
+      setTodos([...todos, addedTodo.data.todo]);
 
       setTodoText("");
     } catch (error) {
