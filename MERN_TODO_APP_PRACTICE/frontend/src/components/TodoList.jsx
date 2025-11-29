@@ -121,50 +121,65 @@ function TodoList() {
     fetchTodos();
   }, []);
 
-  return (
-    <div>
-      <h1>Todo Application</h1>
+return (
+  <div className="todo-container">
+    <h1>Todo Application</h1>
 
+    <div className="input-section">
       <input
         type="text"
         placeholder="Enter your todo..."
         value={todoText}
         onChange={(e) => setTodoText(e.target.value)}
       />
-      <button onClick={isEditing ? updateTodo : addTodo}>
-        {isEditing === true ? "Update" : "Add"}
+
+      <button
+        className={isEditing ? "update-btn" : "add-btn"}
+        onClick={isEditing ? updateTodo : addTodo}
+      >
+        {isEditing ? "Update" : "Add"}
       </button>
 
-      {isEditing && <button onClick={cancelEdit}>Cancel</button>}
-
-      <div>
-        <ul>
-          {todos.map((todo) => {
-            return (
-              <li key={todo._id || todo.id}>
-                <input
-                  type="checkbox"
-                  checked={todo.completed}
-                  onChange={() => toggleComplete(todo)}
-                />
-                <span
-                  style={{
-                    textDecoration: todo.completed ? "line-through" : "none",
-                  }}
-                >
-                  {todo.title}
-                </span>{" "}
-                <button onClick={() => fetchUpdatingDetails(todo)}>Edit</button>
-                <button onClick={() => deleteTodo(todo._id || todo.id)}>
-                  Delete
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      {isEditing && (
+        <button className="cancel-btn" onClick={cancelEdit}>
+          Cancel
+        </button>
+      )}
     </div>
-  );
+
+    <ul>
+      {todos.map((todo) => (
+        <li key={todo._id || todo.id}>
+          <input
+            type="checkbox"
+            checked={todo.completed}
+            onChange={() => toggleComplete(todo)}
+          />
+
+          <span
+            style={{
+              textDecoration: todo.completed ? "line-through" : "none",
+            }}
+          >
+            {todo.title}
+          </span>
+
+          <button className="edit-btn" onClick={() => fetchUpdatingDetails(todo)}>
+            Edit
+          </button>
+
+          <button
+            className="delete-btn"
+            onClick={() => deleteTodo(todo._id || todo.id)}
+          >
+            Delete
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
 }
 
 export default TodoList;

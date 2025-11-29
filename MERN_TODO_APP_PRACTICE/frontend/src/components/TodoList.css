@@ -1,0 +1,88 @@
+/* Center everything */
+.todo-container {
+  width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fafafa;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.todo-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Input + Add button section */
+.input-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Input box */
+.input-section input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Buttons */
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.add-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.update-btn {
+  background-color: #27ae60;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #e67e22;
+  color: white;
+  margin-left: 10px;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  margin-left: 10px;
+}
+
+.edit-btn {
+  background-color: #8e44ad;
+  color: white;
+  margin-left: 10px;
+}
+
+/* Todo items */
+li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+/* Todo text */
+li span {
+  flex: 1;
+  margin-left: 10px;
+  font-size: 15px;
+}
